@@ -21,9 +21,7 @@ void UOpenDoor::BeginPlay()
 	Super::BeginPlay();
 
 	float MyFloat = 90.f;
-
 	FRotator CurrentRotaion = GetOwner()->GetActorRotation();
-
 	GetOwner()->SetActorRotation(FRotator(CurrentRotaion.Pitch, CurrentRotaion.Yaw + MyFloat, CurrentRotaion.Roll));
 	
 }
