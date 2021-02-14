@@ -1,5 +1,6 @@
 // Yao Yifan 2021
 
+#include "PhysicsEngine/PhysicsHandleComponent.h"
 #include "Engine/EngineTypes.h"
 #include "DrawDebugHelpers.h"
 #include "GameFramework/PlayerController.h"
@@ -24,7 +25,16 @@ void UGrabber::BeginPlay()
 {
 	Super::BeginPlay();
 
-	// ...
+	// check for physics handle component
+	PhysicsHandle = GetOwner()->FindComponentByClass<UPhysicsHandleComponent>();
+	if(PhysicsHandle)
+	{
+
+	}
+	else
+	{
+		UE_LOG(LogTemp, Error, TEXT("%s doesn't have a physics handle component at the start of game."), *GetOwner()->GetName());
+	}
 	
 }
 
@@ -74,8 +84,9 @@ void UGrabber::TickComponent(float DeltaTime, ELevelTick TickType, FActorCompone
 	);
 
 	// See what it hits
-	if(Hit.GetActor()){
-		AActor* HitActor = Hit.GetActor();
+	AActor* HitActor = Hit.GetActor();
+	if(HitActor)
+	{
 		FString HitName = HitActor->GetName();
 		UE_LOG(LogTemp, Warning, TEXT("The actor being hit is %s"), *HitName);
 	}
