@@ -28,10 +28,14 @@ public:
 	void OpenDoor(float DeltaTime);
 	// Close Door Function
 	void CloseDoor(float DeltaTime);
+	float TotalMassOfActors() const;
 	
 
 private:
 	float InitialYaw, CurrentYaw, TargetYaw;
+
+	UPROPERTY(EditAnywhere)
+	float MassToOpenDoor = 40.f;
 
 	UPROPERTY(EditAnywhere)
 	float OpenAngle = 60.f;
