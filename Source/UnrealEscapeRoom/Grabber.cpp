@@ -30,15 +30,11 @@ void UGrabber::BeginPlay()
 void UGrabber::FindPhysicsHandle()
 {
 	PhysicsHandle = GetOwner()->FindComponentByClass<UPhysicsHandleComponent>();
-	if(PhysicsHandle == nullptr)
+	if(!PhysicsHandle)
 	{
 		UE_LOG(LogTemp, Error, TEXT("%s doesn't have a physics handle component at the start of game."), *GetOwner()->GetName());
 	}
-	else
-	{
-	}
 }
-
 // check for input components
 void UGrabber::SetupInputComponent()
 {
@@ -54,13 +50,14 @@ void UGrabber::Grab()
 {
 	// Try and reach any actors with physics body collison channel set
 	FHitResult HitResult = GetFirstPhysicsBodyInReach();
-
+	AActor* ActorHit = HitResult.GetActor();
 	// If we hit something, attach the physics handle
-	if(HitResult.GetActor())
+	if(ActorHit)
 	{	
 		// get the component being hit
 		UPrimitiveComponent* ComponentToGrab = HitResult.GetComponent();
 		// attach physics handle
+		if(!PhysicsHandle){return;}
 		PhysicsHandle->GrabComponentAtLocation
 			(
 				ComponentToGrab,
@@ -72,8 +69,7 @@ void UGrabber::Grab()
 
 void UGrabber::Release()
 {
-	UE_LOG(LogTemp, Warning, TEXT("Released"));
-
+	if(!PhysicsHandle){return;}
 	// TODO release the physics handle
 	if(PhysicsHandle->GrabbedComponent)
 	{
@@ -86,6 +82,7 @@ void UGrabber::TickComponent(float DeltaTime, ELevelTick TickType, FActorCompone
 {
 	Super::TickComponent(DeltaTime, TickType, ThisTickFunction);
 
+	if(!PhysicsHandle){return;}
 	// If physics handle is attached
 	if(PhysicsHandle->GrabbedComponent)
 	{

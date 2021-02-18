@@ -29,7 +29,11 @@ public:
 	// Close Door Function
 	void CloseDoor(float DeltaTime);
 	float TotalMassOfActors() const;
-	
+	void FindAudioComponent();
+	void FindPressurePlate();
+
+	bool OpenDoorSound = false;
+	bool CloseDoorSound = true;
 
 private:
 	float InitialYaw, CurrentYaw, TargetYaw;
@@ -48,12 +52,12 @@ private:
 	UPROPERTY(EditAnywhere)
 	ATriggerVolume* PressurePlate;
 
-	UPROPERTY(EditAnywhere)
-	AActor* ActorThatOpens;
-
 	float DoorLastOpened = 0.f;
 
 	UPROPERTY(EditAnywhere)
 	float DoorClosedDelay = 0.1f;
+
+	UPROPERTY()
+	UAudioComponent* AudioComponent = nullptr;
 
 };
