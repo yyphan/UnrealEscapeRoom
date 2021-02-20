@@ -87,3 +87,13 @@ BuildingEscape.code-workspace
 # Textures
 Textures/*
 
+# External Package Ignored
+Content/EF_Barbara/*
+Content/EF_Edie/*
+Content/EF_Edith/*
+Content/EF_Grounds/*
+Content/EF_Lewis/*
+Content/EF_MollyGreg/*
+Content/EF_Sam/*
+Content/EF_TwinsRoom/*
+
