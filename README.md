@@ -5,6 +5,14 @@ One small step for mankind, one giant leap for me.
 
 Tech Demo(Not worth it): https://youtu.be/0eEZqHiYEBc
 
+# Polished Level (Ongoing)
+
+![1 Mar 2021 Screenshot](/Screenshots/1.png)
+![1 Mar 2021 Screenshot](/Screenshots/2.png)
+![1 Mar 2021 Screenshot](/Screenshots/3.png)
+![1 Mar 2021 Screenshot](/Screenshots/4.png)
+![1 Mar 2021 Screenshot](/Screenshots/5.png)
+
 # Things I Have Learnt in Doing Demo 
 (Those I remembered to note down anyway)
 1. You can create a pointer anytime you like. But you must check for null pointer before you try to access it. If not project will crash without logging any useful error messages.
